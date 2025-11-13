@@ -1,16 +1,35 @@
 document.addEventListener("DOMContentLoaded", () => {
-  if (document.querySelector('.scroll-up')) return; // avoid duplicates
-  const scrollBtn = document.createElement("div");
-  scrollBtn.className = "scroll-up";
-  scrollBtn.innerHTML = "⬆";
-  document.body.appendChild(scrollBtn);
+  const scrollBtn = document.querySelector('.scroll-up');
+  
+  if (!scrollBtn) return;
 
-  scrollBtn.addEventListener("click", () => {
-    window.scrollTo({ top: 0, behavior: "smooth" });
+  // Initial check
+  if (window.scrollY > 600) {
+    scrollBtn.classList.add('visible');
+  }
+
+  // Click handler
+  scrollBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
   });
 
-  window.addEventListener("scroll", () => {
-    if (window.scrollY > 600) scrollBtn.classList.add("visible");
-    else scrollBtn.classList.remove("visible");
+  // Scroll handler
+  let isScrolling;
+  window.addEventListener('scroll', () => {
+    // Clear any existing timeout
+    window.clearTimeout(isScrolling);
+    
+    // Set a new timeout
+    isScrolling = setTimeout(() => {
+      if (window.scrollY > 600) {
+        scrollBtn.classList.add('visible');
+      } else {
+        scrollBtn.classList.remove('visible');
+      }
+    }, 100); // Small delay for better performance
   });
 });

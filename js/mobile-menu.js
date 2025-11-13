@@ -3,16 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const navbarToggler = document.querySelector('.navbar-toggler');
     const navbarCollapse = document.querySelector('.navbar-collapse');
     
-    // Create close button
-    const closeMenu = document.createElement('button');
-    closeMenu.className = 'close-menu';
-    closeMenu.innerHTML = '&times;';
-    closeMenu.setAttribute('aria-label', 'Close menu');
-    
-    // Add close button after navbar collapse
-    if (navbarCollapse) {
-        navbarCollapse.parentNode.insertBefore(closeMenu, navbarCollapse.nextSibling);
-    }
+    // Close button has been removed as requested
     
     // Toggle mobile menu
     function toggleMenu() {
@@ -42,12 +33,7 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
     
-    if (closeMenu) {
-        closeMenu.addEventListener('click', function(e) {
-            e.stopPropagation();
-            toggleMenu();
-        });
-    }
+    // Close menu handler removed
     
     // Close menu when clicking on a nav link
     const navLinks = document.querySelectorAll('.nav-link');
@@ -65,8 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         if (navbarCollapse.classList.contains('show') && 
             !navbarCollapse.contains(e.target) && 
-            !navbarToggler.contains(e.target) &&
-            !closeMenu.contains(e.target)) {
+            !navbarToggler.contains(e.target)) {
             toggleMenu();
         }
     });
