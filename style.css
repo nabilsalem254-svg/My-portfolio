@@ -188,6 +188,9 @@ iframe, video {
     transition: all 0.3s ease-in-out;
     overflow-y: auto;
     box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+    display: flex;
+    flex-direction: column;
+    padding: 20px 0;
 }
 
 /* RTL Support */
@@ -231,6 +234,10 @@ iframe, video {
     list-style: none;
     padding: 1rem 0;
     margin: 0;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 
 .nav-link {
@@ -241,6 +248,16 @@ iframe, video {
     text-decoration: none;
     transition: all 0.3s ease;
     border-right: 4px solid transparent;
+    width: 100%;
+    box-sizing: border-box;
+    font-size: 1.1rem;
+}
+
+.nav-icon {
+    margin-left: 1rem;
+    font-size: 1.3rem;
+    min-width: 30px;
+    text-align: center;
 }
 
 .nav-link:hover,
@@ -270,28 +287,45 @@ iframe, video {
 
 /* Mobile Navigation */
 @media (max-width: 768px) {
-    .main-nav {
-        padding: 0.6rem 0;
+    .menu-toggle {
+        top: 1rem;
+        right: 1rem;
+        z-index: 1002;
     }
     
-    .nav-container {
-        padding: 0 1rem;
+    .language-toggle {
+        top: 1rem;
+        left: 1rem;
+        z-index: 1002;
     }
     
-    .nav-links {
-        justify-content: space-around;
-        gap: 0.5rem;
+    .sidebar-nav {
+        width: 85%;
+        max-width: 300px;
+        right: -100%;
+    }
+    
+    [dir="rtl"] .sidebar-nav {
+        right: auto;
+        left: -100%;
+    }
+    
+    .sidebar-nav.active {
+        right: 0;
+    }
+    
+    [dir="rtl"] .sidebar-nav.active {
+        left: 0;
+        right: auto;
     }
     
     .nav-link {
-        font-size: 0.95rem;
-        padding: 0.4rem 0.6rem;
-        text-align: center;
-        flex: 1;
+        padding: 1.2rem 1.5rem;
+        font-size: 1.1rem;
     }
     
     .hero {
-        padding-top: 60px; /* Less space for mobile nav */
+        padding-top: 60px;
     }
 }
 
