@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover" />
-  <title>مصطفى نبيل عبدالمنصف</title>
+  <title>Mostafa Nabil Abd Elmonsef - Portfolio</title>
   <link rel="stylesheet" href="./bootstrap.min.css" />
   <link rel="stylesheet" href="css/all.min.css" />
   <link rel="stylesheet" href="style.css" />
@@ -20,17 +20,37 @@
 <header class="hero">
   <div class="hero-overlay"></div>
 
-  <nav class="main-nav" role="navigation" aria-label="Main Navigation">
-    <div class="nav-container">
-      <ul class="nav-links">
-        <li><a href="index.html" class="nav-link" aria-current="page">
-          <span class="nav-text">Home</span>
-        </a></li>
-        <li><a href="progects/project.html" class="nav-link">
-          <span class="nav-text">Projects</span>
-        </a></li>
-      </ul>
+  <!-- Menu Button -->
+  <button class="menu-toggle" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="menu-icon"></span>
+    <span class="menu-text">Menu</span>
+  </button>
+
+  <!-- Language Toggle -->
+  <div class="language-toggle">
+    <button class="lang-btn active" data-lang="en">EN</button>
+    <span class="lang-separator">|</span>
+    <button class="lang-btn" data-lang="ar">عربي</button>
+  </div>
+
+  <!-- Sidebar Navigation -->
+  <div class="sidebar-overlay"></div>
+  <nav class="sidebar-nav" role="navigation" aria-label="Main Navigation">
+    <div class="sidebar-header">
+      <button class="close-menu" aria-label="Close menu">
+        <span class="close-icon">&times;</span>
+      </button>
     </div>
+    <ul class="nav-links">
+      <li><a href="index.html" class="nav-link" aria-current="page">
+        <span class="nav-icon">🏠</span>
+        <span class="nav-text" data-en="Home" data-ar="الرئيسية">Home</span>
+      </a></li>
+      <li><a href="progects/project.html" class="nav-link">
+        <span class="nav-icon">💼</span>
+        <span class="nav-text" data-en="Projects" data-ar="المشاريع">Projects</span>
+      </a></li>
+    </ul>
   </nav>
 
   <div class="hero-content">

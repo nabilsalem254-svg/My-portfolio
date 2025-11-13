@@ -66,51 +66,206 @@ iframe, video {
     height: auto;
 }
 
-/* ===================== NAVIGATION ===================== */
-.main-nav {
+/* ===================== LANGUAGE TOGGLE ===================== */
+.language-toggle {
+    position: fixed;
+    top: 1rem;
+    left: 1rem;
+    z-index: 1002;
+    display: flex;
+    align-items: center;
+    background: rgba(0, 11, 20, 0.9);
+    border-radius: 20px;
+    padding: 0.2rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.lang-btn {
+    background: transparent;
+    border: none;
+    color: rgba(255, 255, 255, 0.7);
+    padding: 0.3rem 0.8rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.lang-btn.active {
+    background: rgba(136, 211, 206, 0.2);
+    color: #88d3ce;
+    font-weight: bold;
+}
+
+.lang-separator {
+    color: rgba(255, 255, 255, 0.3);
+    font-size: 1rem;
+    line-height: 1;
+}
+
+/* RTL Support */
+[dir="rtl"] .language-toggle {
+    left: auto;
+    right: 1rem;
+}
+
+/* ===================== SIDEBAR NAVIGATION ===================== */
+.menu-toggle {
+    position: fixed;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(0, 11, 20, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: all 0.3s ease;
+}
+
+.menu-toggle:hover {
+    background: rgba(0, 11, 20, 1);
+    transform: translateY(-2px);
+}
+
+.menu-icon {
+    display: block;
+    width: 20px;
+    height: 2px;
+    background: white;
+    position: relative;
+}
+
+.menu-icon::before,
+.menu-icon::after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: white;
+    left: 0;
+    transition: all 0.3s ease;
+}
+
+.menu-icon::before {
+    top: -6px;
+}
+
+.menu-icon::after {
+    bottom: -6px;
+}
+
+.sidebar-overlay {
     position: fixed;
     top: 0;
     right: 0;
+    bottom: 0;
     left: 0;
-    background: rgba(0, 11, 20, 0.98);
-    z-index: 1000;
-    padding: 0.8rem 0;
-    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
-    backdrop-filter: blur(10px);
-    -webkit-backdrop-filter: blur(10px);
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
 }
 
-.nav-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 1.5rem;
+.sidebar-overlay.active {
+    opacity: 1;
+    visibility: visible;
+}
+
+.sidebar-nav {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 280px;
+    height: 100%;
+    background: #00152b;
+    z-index: 1000;
+    transition: all 0.3s ease-in-out;
+    overflow-y: auto;
+    box-shadow: -5px 0 15px rgba(0, 0, 0, 0.2);
+}
+
+/* RTL Support */
+[dir="rtl"] .sidebar-nav {
+    right: auto;
+    left: -300px;
+    box-shadow: 5px 0 15px rgba(0, 0, 0, 0.2);
+}
+
+[dir="rtl"] .sidebar-nav.active {
+    left: 0;
+    right: auto;
+}
+
+.sidebar-nav.active {
+    right: 0;
+}
+
+.sidebar-header {
+    padding: 1rem;
+    display: flex;
+    justify-content: flex-start;
+}
+
+.close-menu {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+    padding: 0.5rem;
+    margin-right: auto;
+    transition: transform 0.3s ease;
+}
+
+.close-menu:hover {
+    transform: rotate(90deg);
 }
 
 .nav-links {
     list-style: none;
+    padding: 1rem 0;
     margin: 0;
-    padding: 0;
-    display: flex;
-    justify-content: flex-start;
-    gap: 1.5rem;
-    padding-right: 0;
 }
 
 .nav-link {
-    color: white;
+    display: flex;
+    align-items: center;
+    padding: 1rem 1.5rem;
+    color: #e0e0e0;
     text-decoration: none;
-    font-size: 1rem;
     transition: all 0.3s ease;
-    padding: 0.5rem 0.8rem;
-    border-radius: 4px;
-    display: inline-block;
-    position: relative;
+    border-right: 4px solid transparent;
 }
 
-.nav-link:hover {
+.nav-link:hover,
+.nav-link:focus {
+    background: rgba(255, 255, 255, 0.05);
     color: #88d3ce;
-    background: rgba(255, 255, 255, 0.1);
-    transform: translateY(-2px);
+    border-right-color: #88d3ce;
+}
+
+.nav-icon {
+    margin-left: 1rem;
+    font-size: 1.2rem;
+    width: 24px;
+    text-align: center;
+}
+
+.nav-text {
+    font-size: 1rem;
+}
+
+/* Active state for current page */
+.nav-link[aria-current="page"] {
+    background: rgba(136, 211, 206, 0.1);
+    color: #88d3ce;
+    border-right-color: #88d3ce;
 }
 
 /* Mobile Navigation */
